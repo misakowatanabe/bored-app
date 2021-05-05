@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bored-app-mw.github.io/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/bored-app-mw.github.io/static/js/main.8b3eebbc.chunk.js",
+    "main.js.map": "/bored-app-mw.github.io/static/js/main.8b3eebbc.chunk.js.map",
+    "runtime-main.js": "/bored-app-mw.github.io/static/js/runtime-main.935cb956.js",
+    "runtime-main.js.map": "/bored-app-mw.github.io/static/js/runtime-main.935cb956.js.map",
+    "static/js/2.ba910cfc.chunk.js": "/bored-app-mw.github.io/static/js/2.ba910cfc.chunk.js",
+    "static/js/2.ba910cfc.chunk.js.map": "/bored-app-mw.github.io/static/js/2.ba910cfc.chunk.js.map",
+    "static/js/3.0753dfc3.chunk.js": "/bored-app-mw.github.io/static/js/3.0753dfc3.chunk.js",
+    "static/js/3.0753dfc3.chunk.js.map": "/bored-app-mw.github.io/static/js/3.0753dfc3.chunk.js.map",
+    "index.html": "/bored-app-mw.github.io/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/bored-app-mw.github.io/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.ba910cfc.chunk.js.LICENSE.txt": "/bored-app-mw.github.io/static/js/2.ba910cfc.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/bored-app-mw.github.io/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.935cb956.js",
+    "static/js/2.ba910cfc.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.8b3eebbc.chunk.js"
+  ]
+}
