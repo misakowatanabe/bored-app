@@ -103,7 +103,7 @@ function Input() {
   var priceMax = priceValue[1] / 100;
   const priceRequest = `&minprice=${priceMin}&maxprice=${priceMax}`;
 
-  const apiUrl = `http://www.boredapi.com/api/activity?${participantsRequest}${typeRequest}${accessibilityRequest}${priceRequest}`;
+  const apiUrl = `https://www.boredapi.com/api/activity?${participantsRequest}${typeRequest}${accessibilityRequest}${priceRequest}`;
 
   const [responseData, setResponseData] = useState("");
 
