@@ -4,8 +4,35 @@ import Type from "./Type";
 import Accessibility from "./Accessibility";
 import Price from "./Price";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: "33.33%",
+    flexShrink: 0,
+  },
+  secondaryHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    color: theme.palette.text.secondary,
+  },
+}));
 
 function Input() {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const [participants, setParticipants] = useState("1");
   const handleParticipantsChange = (event) => {
     setParticipants(event.target.value);
@@ -92,8 +119,7 @@ function Input() {
   } else {
     busyworkString = "";
   }
-  const typeRequest = 
-  `${educationString}${recreationalString}${socialString}${diyString}${charityString}${cookingString}${relaxationString}${musicString}${busyworkString}`;
+  const typeRequest = `${educationString}${recreationalString}${socialString}${diyString}${charityString}${cookingString}${relaxationString}${musicString}${busyworkString}`;
 
   var accessibilityMin = accessibilityValue[0] / 100;
   var accessibilityMax = accessibilityValue[1] / 100;
@@ -108,14 +134,10 @@ function Input() {
   const [responseData, setResponseData] = useState("");
 
   useEffect(() => {
-    
-    console.log(apiUrl);
-
     axios
       .get(apiUrl)
       .then((response) => {
         setResponseData(response.data);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -124,25 +146,145 @@ function Input() {
 
   return (
     <div>
-      <Participants value={participants} onChange={handleParticipantsChange} />
-      <Type
-        educationChecked={state.education}
-        recreationalChecked={state.recreational}
-        socialChecked={state.social}
-        diyChecked={state.diy}
-        charityChecked={state.charity}
-        cookingChecked={state.cooking}
-        relaxationChecked={state.relaxation}
-        musicChecked={state.music}
-        busyworkCchecked={state.busywork}
-        onChange={handleTypeChange}
-      />
-      <Accessibility
-        AccessibilityValue={accessibilityValue}
-        onAccessibilityChange={handleAccessibilityChange}
-      />
-      <Price PriceValue={priceValue} onPriceChange={handlePriceChange} />
-      <div>{responseData && JSON.stringify(responseData, null, 4)}</div>
+      {!responseData ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <div>
+          {!responseData.activity ? (
+            <div className="response">No matching :(</div>
+          ) : (
+            <div>
+              {!responseData.link ? (
+                <div className="response">{responseData.activity}</div>
+              ) : (
+                <>
+                  <div className="response">{responseData.activity}</div>
+                  <div className="responseLink-container">
+                    <div className="responseLink">
+                      <div>Learn more</div>
+                      <a
+                        href={responseData.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {responseData.link}
+                      </a>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+      <div>
+        <div className={classes.root} style={{ width: "90%", margin: "auto" }}>
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography
+                className={classes.heading}
+                style={{ fontWeight: 500 }}
+              >
+                Participants
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ display: "grid" }}>
+              <p>How many people are you?</p>
+              <Participants
+                value={participants}
+                onChange={handleParticipantsChange}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography
+                className={classes.heading}
+                style={{ fontWeight: 500 }}
+              >
+                Type
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ display: "grid" }}>
+              <p>What types of activities are you intersted in?</p>
+              <Type
+                educationChecked={state.education}
+                recreationalChecked={state.recreational}
+                socialChecked={state.social}
+                diyChecked={state.diy}
+                charityChecked={state.charity}
+                cookingChecked={state.cooking}
+                relaxationChecked={state.relaxation}
+                musicChecked={state.music}
+                busyworkCchecked={state.busywork}
+                onChange={handleTypeChange}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3a-content"
+              id="panel3a-header"
+            >
+              <Typography
+                className={classes.heading}
+                style={{ fontWeight: 500 }}
+              >
+                Accessibility
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ display: "grid" }}>
+              <p>To what extent should the activity be accessible?</p>
+              <Accessibility
+                AccessibilityValue={accessibilityValue}
+                onAccessibilityChange={handleAccessibilityChange}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel4"}
+            onChange={handleChange("panel4")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3a-content"
+              id="panel3a-header"
+            >
+              <Typography
+                className={classes.heading}
+                style={{ fontWeight: 500 }}
+              >
+                Price
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ display: "grid" }}>
+              <p>How much should the activity cost?</p>
+              <Price
+                PriceValue={priceValue}
+                onPriceChange={handlePriceChange}
+              />
+            </AccordionDetails>
+          </Accordion>
+        </div>
+      </div>
     </div>
   );
 }

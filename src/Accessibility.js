@@ -1,12 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 300,
-    margin: "auto",
+    marginRight: "10%",
+    marginLeft: "10%"
   },
   margin: {
     height: theme.spacing(3),
@@ -49,13 +48,9 @@ export default function Accessibility(props) {
 
   return (
     <div className={classes.root}>
-      <Typography id="discrete-slider-custom" gutterBottom>
-        Accessibility
-      </Typography>
       <Slider
         value={props.AccessibilityValue}
         onChange={props.onAccessibilityChange}
-        // getAriaValueText={valuetext}
         valueLabelFormat={valueLabelFormat}
         aria-labelledby="discrete-slider-custom"
         step={null}
