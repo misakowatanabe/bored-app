@@ -248,7 +248,15 @@ function Input() {
                     </div>
                   </div>
                   <figure className="img-container">
-                    <img src={backgroundImage} alt="background" />
+                    <img
+                      style={{
+                        width: "100%",
+                        margin: "auto",
+                        filter: "brightness(60%)",
+                      }}
+                      src={backgroundImage}
+                      alt="background"
+                    />
                   </figure>
                 </div>
               )}
