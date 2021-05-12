@@ -142,7 +142,7 @@ function Input() {
 
   const [responseData, setResponseData] = useState("");
 
-  const [backgroundImage, setBackgroundImage] = useState("");
+  const [backgroundPic, setBackgroundPic] = useState("");
 
   useEffect(() => {
     axios
@@ -150,23 +150,23 @@ function Input() {
       .then((response) => {
         setResponseData(response.data);
         if (response.data.type === "education") {
-          setBackgroundImage(imageEducation);
+          setBackgroundPic(imageEducation);
         } else if (response.data.type === "recreational") {
-          setBackgroundImage(imageRecreational);
+          setBackgroundPic(imageRecreational);
         } else if (response.data.type === "social") {
-          setBackgroundImage(imageSocial);
+          setBackgroundPic(imageSocial);
         } else if (response.data.type === "diy") {
-          setBackgroundImage(imageDiy);
+          setBackgroundPic(imageDiy);
         } else if (response.data.type === "charity") {
-          setBackgroundImage(imageCharity);
+          setBackgroundPic(imageCharity);
         } else if (response.data.type === "cooking") {
-          setBackgroundImage(imageCooking);
+          setBackgroundPic(imageCooking);
         } else if (response.data.type === "relaxation") {
-          setBackgroundImage(imageRelaxation);
+          setBackgroundPic(imageRelaxation);
         } else if (response.data.type === "music") {
-          setBackgroundImage(imageMusic);
+          setBackgroundPic(imageMusic);
         } else if (response.data.type === "busywork") {
-          setBackgroundImage(imageBusywork);
+          setBackgroundPic(imageBusywork);
         }
       })
       .catch((error) => {
@@ -176,64 +176,40 @@ function Input() {
 
   return (
     <div>
-      {!responseData && !backgroundImage ? (
-        <div className="loadingTextImage-container">
-          <div className="loadingText">Loading...</div>
-          <Skeleton className="skeleton" variant="rect">
-            <img
-              style={{ width: "100%", margin: "auto", opacity: "0.0" }}
-              src={dimentionAdjustment}
-              alt="dimentionAdjustment"
-            />
-          </Skeleton>
-        </div>
-      ) : (
-        <div>
-          {!responseData.activity ? (
-            <div className="textImageWithoutLink-container">
-              <div className="text-container">
-                <div className="text">No matching</div>
-                <div className="subTextForNoMatch">
-                  At least you got a kitten pic!
-                </div>
-              </div>
-              <figure className="img-container">
+      <div>
+        {!responseData && !backgroundPic ? (
+          <div className="textImageWithLink-container">
+            <div className="loadingTextImage-container">
+              <div className="loadingText">Loading...</div>
+              <Skeleton className="skeleton" variant="rect">
                 <img
                   style={{
                     width: "100%",
                     margin: "auto",
-                    filter: "brightness(60%)",
+                    opacity: "0.0",
+                    height: "100vh",
                   }}
-                  src={error}
-                  alt="background"
+                  src={dimentionAdjustment}
+                  alt="dimentionAdjustment"
                 />
-              </figure>
+              </Skeleton>
             </div>
-          ) : (
-            <div>
-              {!responseData.link ? (
-                <div className="textImageWithoutLink-container">
-                  <div className="text-container">
-                    <div className="subText">Feeling bored?</div>
-                    <div className="text">{responseData.activity}</div>
+          </div>
+        ) : (
+          <div>
+            <div className="text-container">
+              {!responseData.activity ? (
+                <div>
+                  <div className="text">No matching</div>
+                  <div className="subTextForNoMatch">
+                    At least you got a kitten pic!
                   </div>
-                  <figure className="img-container">
-                    <img
-                      style={{
-                        width: "100%",
-                        margin: "auto",
-                        filter: "brightness(60%)",
-                      }}
-                      src={backgroundImage}
-                      alt="background"
-                    />
-                  </figure>
                 </div>
               ) : (
-                <div className="textImageWithLink-container">
-                  <div className="text-container">
-                    <div className="subText">Feeling bored?</div>
-                    <div className="text">{responseData.activity}</div>
+                <div>
+                  <div className="subText">Feeling bored?</div>
+                  <div className="text">{responseData.activity}</div>
+                  {!responseData.link ? null : (
                     <div className="link-container">
                       <div className="link">
                         <div>Start with this!</div>
@@ -246,135 +222,145 @@ function Input() {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <figure className="img-container">
-                    <img
-                      style={{
-                        width: "100%",
-                        margin: "auto",
-                        filter: "brightness(60%)",
-                      }}
-                      src={backgroundImage}
-                      alt="background"
-                    />
-                  </figure>
+                  )}
                 </div>
               )}
+              <div className="accordion-container">
+                <div className={classes.root}>
+                  <Accordion
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <Typography
+                        className={classes.heading}
+                        style={{ fontWeight: 500 }}
+                      >
+                        Participants
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{ display: "grid" }}>
+                      <p>How many people are you?</p>
+                      <Participants
+                        value={participants}
+                        onChange={handleParticipantsChange}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel2"}
+                    onChange={handleChange("panel2")}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel2a-content"
+                      id="panel2a-header"
+                    >
+                      <Typography
+                        className={classes.heading}
+                        style={{ fontWeight: 500 }}
+                      >
+                        Type
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{ display: "grid" }}>
+                      <p>What types of activities are you intersted in?</p>
+                      <Type
+                        educationChecked={state.education}
+                        recreationalChecked={state.recreational}
+                        socialChecked={state.social}
+                        diyChecked={state.diy}
+                        charityChecked={state.charity}
+                        cookingChecked={state.cooking}
+                        relaxationChecked={state.relaxation}
+                        musicChecked={state.music}
+                        busyworkCchecked={state.busywork}
+                        onChange={handleTypeChange}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel3"}
+                    onChange={handleChange("panel3")}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3a-content"
+                      id="panel3a-header"
+                    >
+                      <Typography
+                        className={classes.heading}
+                        style={{ fontWeight: 500 }}
+                      >
+                        Accessibility
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{ display: "grid" }}>
+                      <p>To what extent should the activity be accessible?</p>
+                      <Accessibility
+                        AccessibilityValue={accessibilityValue}
+                        onAccessibilityChange={handleAccessibilityChange}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel4"}
+                    onChange={handleChange("panel4")}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3a-content"
+                      id="panel3a-header"
+                    >
+                      <Typography
+                        className={classes.heading}
+                        style={{ fontWeight: 500 }}
+                      >
+                        Price
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{ display: "grid" }}>
+                      <p>How much should the activity cost?</p>
+                      <Price
+                        PriceValue={priceValue}
+                        onPriceChange={handlePriceChange}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
-      )}
-      <div className="accordion-container">
-        <div className={classes.root}>
-          <Accordion
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-            square={true}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography
-                className={classes.heading}
-                style={{ fontWeight: 500 }}
-              >
-                Participants
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails style={{ display: "grid" }}>
-              <p>How many people are you?</p>
-              <Participants
-                value={participants}
-                onChange={handleParticipantsChange}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "panel2"}
-            onChange={handleChange("panel2")}
-            square={true}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography
-                className={classes.heading}
-                style={{ fontWeight: 500 }}
-              >
-                Type
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails style={{ display: "grid" }}>
-              <p>What types of activities are you intersted in?</p>
-              <Type
-                educationChecked={state.education}
-                recreationalChecked={state.recreational}
-                socialChecked={state.social}
-                diyChecked={state.diy}
-                charityChecked={state.charity}
-                cookingChecked={state.cooking}
-                relaxationChecked={state.relaxation}
-                musicChecked={state.music}
-                busyworkCchecked={state.busywork}
-                onChange={handleTypeChange}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "panel3"}
-            onChange={handleChange("panel3")}
-            square={true}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel3a-content"
-              id="panel3a-header"
-            >
-              <Typography
-                className={classes.heading}
-                style={{ fontWeight: 500 }}
-              >
-                Accessibility
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails style={{ display: "grid" }}>
-              <p>To what extent should the activity be accessible?</p>
-              <Accessibility
-                AccessibilityValue={accessibilityValue}
-                onAccessibilityChange={handleAccessibilityChange}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "panel4"}
-            onChange={handleChange("panel4")}
-            square={true}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel3a-content"
-              id="panel3a-header"
-            >
-              <Typography
-                className={classes.heading}
-                style={{ fontWeight: 500 }}
-              >
-                Price
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails style={{ display: "grid" }}>
-              <p>How much should the activity cost?</p>
-              <Price
-                PriceValue={priceValue}
-                onPriceChange={handlePriceChange}
-              />
-            </AccordionDetails>
-          </Accordion>
-        </div>
+            {!responseData.activity ? (
+              <div
+                style={{
+                  backgroundImage: `url(${error})`,
+                  backgroundSize: "cover",
+                  height: "150vh",
+                  filter: "brightness(60%)",
+                  backgroundRepeat: "no-repeat",
+                  backgroundAttachment: "fixed",
+                  backgroundPosition: "center center",
+                }}
+              ></div>
+            ) : (
+              <div
+                style={{
+                  backgroundImage: `url(${backgroundPic})`,
+                  backgroundSize: "cover",
+                  height: "150vh",
+                  filter: "brightness(60%)",
+                  backgroundRepeat: "no-repeat",
+                  backgroundAttachment: "fixed",
+                  backgroundPosition: "center center",
+                }}
+              ></div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

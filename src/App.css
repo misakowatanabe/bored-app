@@ -1,10 +1,7 @@
-html {
-  background-color: rgb(241, 241, 241);
-}
-
 .loadingTextImage-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .skeleton {
@@ -20,19 +17,8 @@ html {
   font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
-  margin-right: 8%;
-  margin-left: 8%;
+  margin: auto;
   z-index: 1;
-}
-
-.textImageWithoutLink-container {
-  display: flex;
-  align-items: center;
-}
-
-.textImageWithLink-container {
-  display: flex;
-  align-items: center;
 }
 
 .img-container {
@@ -40,14 +26,14 @@ html {
   margin-top: 0%;
   margin-right: 0%;
   margin-left: 0%;
-  margin-bottom: -0.4%;
+  margin-bottom: 0%;
 }
 
 .text-container {
   position: absolute;
   z-index: 1;
-  margin-right: 8%;
-  margin-left: 8%;
+  margin-top: 150px;
+  width: 100%;
 }
 
 .subText {
@@ -57,6 +43,8 @@ html {
   font-family: "Roboto", sans-serif;
   text-align: left;
   margin-bottom: 13px;
+  margin-right: 6%;
+  margin-left: 6%;
 }
 
 .subTextForNoMatch {
@@ -66,6 +54,8 @@ html {
   font-family: "Roboto", sans-serif;
   text-align: left;
   margin-top: 13px;
+  margin-right: 6%;
+  margin-left: 6%;
 }
 
 .text {
@@ -74,6 +64,8 @@ html {
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: left;
+  margin-right: 6%;
+  margin-left: 6%;
 }
 
 .link-container {
@@ -86,6 +78,17 @@ html {
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: left;
+  margin-right: 6%;
+  margin-left: 6%;
+}
+
+.accordion-container {
+  position: absolute;
+  margin-top: 60px;
+  opacity: 0.75;
+  margin-right: 6%;
+  margin-left: 6%;
+  margin-bottom: 600px;
 }
 
 a {
