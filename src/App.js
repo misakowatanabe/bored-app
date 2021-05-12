@@ -4,7 +4,7 @@ import Input from "./Input";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Feeling bored?</header>
+      <header className="App-header"></header>
       <Input />                                                                                                                                                                          
     </div>
   );

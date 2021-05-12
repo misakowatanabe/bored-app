@@ -2,56 +2,94 @@ html {
   background-color: rgb(241, 241, 241);
 }
 
-.App {
-  text-align: left;
+.loadingTextImage-container {
+  display: flex;
+  align-items: center;
 }
 
-.App-header {
-  font-size: 25px;
+.skeleton {
+  position: relative;
+  margin-top: 0%;
+  margin-right: 0%;
+  margin-left: 0%;
+  margin-bottom: -0.4%;
+}
+
+.loadingText {
+  position: absolute;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
-  color: rgb(69, 70, 78);
-  margin-right: 5%;
-  margin-left: 5%;
-  text-align: left;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-right: 8%;
+  margin-left: 8%;
+  z-index: 1;
 }
 
-.loading {
+.textImageWithoutLink-container {
+  display: flex;
+  align-items: center;
+}
+
+.textImageWithLink-container {
+  display: flex;
+  align-items: center;
+}
+
+.img-container {
+  position: relative;
+  margin-top: 0%;
+  margin-right: 0%;
+  margin-left: 0%;
+  margin-bottom: -0.4%;
+}
+
+.text-container {
+  position: absolute;
+  z-index: 1;
+  margin-right: 8%;
+  margin-left: 8%;
+}
+
+.subText {
+  color: rgb(252, 252, 252);
   font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: left;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 13px;
 }
 
-.response {
-  font-size: 35px;
+.subTextForNoMatch {
+  color: rgb(252, 252, 252);
+  font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: left;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 13px;
 }
 
-.responseLink-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 5%;
-  margin-left: 5%;
+.text {
+  color: rgb(252, 252, 252);
+  font-size: 28px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
 }
 
-.responseLink {
+.link-container {
+  margin-top: 35px;
+}
+
+.link {
+  color: rgb(252, 252, 252);
   font-size: 14px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: left;
+}
+
+a {
+  color: rgb(252, 252, 252);
 }
 
 p {
