@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bored-app/static/css/main.0eb80557.chunk.css",
-    "main.js": "/bored-app/static/js/main.6cd3304c.chunk.js",
-    "main.js.map": "/bored-app/static/js/main.6cd3304c.chunk.js.map",
+    "main.js": "/bored-app/static/js/main.b49e1acb.chunk.js",
+    "main.js.map": "/bored-app/static/js/main.b49e1acb.chunk.js.map",
     "runtime-main.js": "/bored-app/static/js/runtime-main.c81a2986.js",
     "runtime-main.js.map": "/bored-app/static/js/runtime-main.c81a2986.js.map",
     "static/js/2.6d62af73.chunk.js": "/bored-app/static/js/2.6d62af73.chunk.js",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.c81a2986.js",
     "static/js/2.6d62af73.chunk.js",
     "static/css/main.0eb80557.chunk.css",
-    "static/js/main.6cd3304c.chunk.js"
+    "static/js/main.b49e1acb.chunk.js"
   ]
 }
