@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/bored-app/static/css/main.0eb80557.chunk.css",
-    "main.js": "/bored-app/static/js/main.b49e1acb.chunk.js",
-    "main.js.map": "/bored-app/static/js/main.b49e1acb.chunk.js.map",
+    "main.css": "/bored-app/static/css/main.c713a185.chunk.css",
+    "main.js": "/bored-app/static/js/main.bff2ca22.chunk.js",
+    "main.js.map": "/bored-app/static/js/main.bff2ca22.chunk.js.map",
     "runtime-main.js": "/bored-app/static/js/runtime-main.c81a2986.js",
     "runtime-main.js.map": "/bored-app/static/js/runtime-main.c81a2986.js.map",
     "static/js/2.6d62af73.chunk.js": "/bored-app/static/js/2.6d62af73.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.f03e43e1.chunk.js": "/bored-app/static/js/3.f03e43e1.chunk.js",
     "static/js/3.f03e43e1.chunk.js.map": "/bored-app/static/js/3.f03e43e1.chunk.js.map",
     "index.html": "/bored-app/index.html",
-    "static/css/main.0eb80557.chunk.css.map": "/bored-app/static/css/main.0eb80557.chunk.css.map",
+    "static/css/main.c713a185.chunk.css.map": "/bored-app/static/css/main.c713a185.chunk.css.map",
     "static/js/2.6d62af73.chunk.js.LICENSE.txt": "/bored-app/static/js/2.6d62af73.chunk.js.LICENSE.txt",
     "static/media/busywork.babfd0a1.jpg": "/bored-app/static/media/busywork.babfd0a1.jpg",
     "static/media/charity.e0557303.jpg": "/bored-app/static/media/charity.e0557303.jpg",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.c81a2986.js",
     "static/js/2.6d62af73.chunk.js",
-    "static/css/main.0eb80557.chunk.css",
-    "static/js/main.b49e1acb.chunk.js"
+    "static/css/main.c713a185.chunk.css",
+    "static/js/main.bff2ca22.chunk.js"
   ]
 }
