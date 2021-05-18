@@ -55,7 +55,7 @@ export default function Price(props) {
         valueLabelFormat={valueLabelFormat}
         aria-labelledby="discrete-slider-custom"
         step={null}
-        valueLabelDisplay="auto"
+        valueLabelDisplay="on"
         marks={marks}
       />
     </div>

@@ -19,9 +19,16 @@ import imageCooking from "./img/cooking.jpg";
 import imageRelaxation from "./img/relaxation.jpg";
 import imageMusic from "./img/music.jpg";
 import imageBusywork from "./img/busywork.jpg";
-import Skeleton from "@material-ui/lab/Skeleton";
-import dimentionAdjustment from "./img/gray.jpg";
 import error from "./img/error.jpg";
+import SchoolIcon from "@material-ui/icons/School";
+import BrushIcon from "@material-ui/icons/Brush";
+import BuildIcon from "@material-ui/icons/Build";
+import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
+import GroupIcon from "@material-ui/icons/Group";
+import LocalPizzaIcon from "@material-ui/icons/LocalPizza";
+import SpaIcon from "@material-ui/icons/Spa";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -37,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Input() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -48,15 +55,15 @@ function Input() {
   };
 
   const [state, setState] = useState({
-    education: false,
-    recreational: false,
-    social: false,
-    diy: false,
-    charity: false,
-    cooking: false,
-    relaxation: false,
-    music: false,
-    busywork: false,
+    education: true,
+    recreational: true,
+    social: true,
+    diy: true,
+    charity: true,
+    cooking: true,
+    relaxation: true,
+    music: true,
+    busywork: true,
   });
   const handleTypeChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -83,48 +90,68 @@ function Input() {
   var relaxationString = "";
   var musicString = "";
   var busyworkString = "";
+
+  var educationRequested = "";
+  var recreationalRequested = "";
+  var socialRequested = "";
+  var diyRequested = "";
+  var charityRequested = "";
+  var cookingRequested = "";
+  var relaxationRequested = "";
+  var musicRequested = "";
+  var busyworkRequested = "";
+
   if (state.education === true) {
     educationString = "&type=education";
+    educationRequested = "Education";
   } else {
     educationString = "";
   }
   if (state.recreational === true) {
     recreationalString = "&type=recreational";
+    recreationalRequested = "Recreational";
   } else {
     recreationalString = "";
   }
   if (state.social === true) {
     socialString = "&type=social";
+    socialRequested = "Social";
   } else {
     socialString = "";
   }
   if (state.diy === true) {
     diyString = "&type=diy";
+    diyRequested = "DIY";
   } else {
     diyString = "";
   }
   if (state.charity === true) {
     charityString = "&type=charity";
+    charityRequested = "Charity";
   } else {
     charityString = "";
   }
   if (state.cooking === true) {
     cookingString = "&type=cooking";
+    cookingRequested = "Cooking";
   } else {
     cookingString = "";
   }
   if (state.relaxation === true) {
     relaxationString = "&type=relaxation";
+    relaxationRequested = "Relaxation";
   } else {
     relaxationString = "";
   }
   if (state.music === true) {
     musicString = "&type=music";
+    musicRequested = "Music";
   } else {
     musicString = "";
   }
   if (state.busywork === true) {
     busyworkString = "&type=busywork";
+    busyworkRequested = "Busy work";
   } else {
     busyworkString = "";
   }
@@ -140,6 +167,8 @@ function Input() {
 
   const apiUrl = `https://www.boredapi.com/api/activity?${participantsRequest}${typeRequest}${accessibilityRequest}${priceRequest}`;
 
+  const [refetch, setRefetch] = useState(0);
+
   const [responseData, setResponseData] = useState("");
 
   const [backgroundPic, setBackgroundPic] = useState("");
@@ -149,66 +178,56 @@ function Input() {
       .get(apiUrl)
       .then((response) => {
         setResponseData(response.data);
-        if (response.data.type === "education") {
+        var type = response.data.type;
+        if (type === "education") {
           setBackgroundPic(imageEducation);
-        } else if (response.data.type === "recreational") {
+        } else if (type === "recreational") {
           setBackgroundPic(imageRecreational);
-        } else if (response.data.type === "social") {
+        } else if (type === "social") {
           setBackgroundPic(imageSocial);
-        } else if (response.data.type === "diy") {
+        } else if (type === "diy") {
           setBackgroundPic(imageDiy);
-        } else if (response.data.type === "charity") {
+        } else if (type === "charity") {
           setBackgroundPic(imageCharity);
-        } else if (response.data.type === "cooking") {
+        } else if (type === "cooking") {
           setBackgroundPic(imageCooking);
-        } else if (response.data.type === "relaxation") {
+        } else if (type === "relaxation") {
           setBackgroundPic(imageRelaxation);
-        } else if (response.data.type === "music") {
+        } else if (type === "music") {
           setBackgroundPic(imageMusic);
-        } else if (response.data.type === "busywork") {
+        } else if (type === "busywork") {
           setBackgroundPic(imageBusywork);
         }
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [participants, state, accessibilityValue, priceValue, apiUrl]);
+  }, [participants, state, accessibilityValue, priceValue, apiUrl, refetch]);
 
   return (
     <div>
-      <div>
-        {!responseData && !backgroundPic ? (
-          <div className="textImageWithLink-container">
-            <div className="loadingTextImage-container">
-              <div className="loadingText">Loading...</div>
-              <Skeleton className="skeleton" variant="rect">
-                <img
-                  style={{
-                    width: "100%",
-                    margin: "auto",
-                    opacity: "0.0",
-                    height: "100vh",
-                  }}
-                  src={dimentionAdjustment}
-                  alt="dimentionAdjustment"
-                />
-              </Skeleton>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <div className="text-container">
-              {!responseData.activity ? (
-                <div>
-                  <div className="text">No matching</div>
+      {!responseData ? (
+        ""
+      ) : (
+        <div>
+          {/* <div className="textImageWithLink-container"></div> */}
+          <div className="contents-container">
+            {!responseData.activity ? (
+              <div className="text-container">
+                <div className="text">
+                  <div className="mainText">No matching</div>
                   <div className="subTextForNoMatch">
                     At least you got a kitten pic!
                   </div>
                 </div>
-              ) : (
-                <div>
-                  <div className="subText">Feeling bored?</div>
-                  <div className="text">{responseData.activity}</div>
+              </div>
+            ) : (
+              <div className="text-container">
+                <div className="text" key={responseData.activity}>
+                  <button onClick={() => setRefetch(refetch + 1)}>
+                    <div className="subText">Feeling bored?</div>
+                    <div className="mainText">{responseData.activity}</div>
+                  </button>
                   {!responseData.link ? null : (
                     <div className="link-container">
                       <div className="link">
@@ -224,144 +243,214 @@ function Input() {
                     </div>
                   )}
                 </div>
-              )}
-              <div className="accordion-container">
-                <div className={classes.root}>
-                  <Accordion
-                    expanded={expanded === "panel1"}
-                    onChange={handleChange("panel1")}
+              </div>
+            )}
+            <div className="accordion-container">
+              <div className={classes.root}>
+                <Accordion
+                  expanded={expanded === "panel1"}
+                  onChange={handleChange("panel1")}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
                   >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography
-                        className={classes.heading}
-                        style={{ fontWeight: 500 }}
-                      >
-                        Participants
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ display: "grid" }}>
-                      <p>How many people are you?</p>
-                      <Participants
-                        value={participants}
-                        onChange={handleParticipantsChange}
-                      />
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel2"}
-                    onChange={handleChange("panel2")}
+                    <Typography className={classes.heading} component={"span"}>
+                      <div className="accordionHeader">Participants</div>
+                      <div className="accordionSecondHeader">
+                        {participants}
+                      </div>
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails style={{ display: "grid" }}>
+                    <p className="participantsQuestion">
+                      How many people are you?
+                    </p>
+                    <Participants
+                      value={participants}
+                      onChange={handleParticipantsChange}
+                    />
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel2"}
+                  onChange={handleChange("panel2")}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
                   >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2a-content"
-                      id="panel2a-header"
-                    >
-                      <Typography
-                        className={classes.heading}
-                        style={{ fontWeight: 500 }}
-                      >
-                        Type
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ display: "grid" }}>
-                      <p>What types of activities are you intersted in?</p>
-                      <Type
-                        educationChecked={state.education}
-                        recreationalChecked={state.recreational}
-                        socialChecked={state.social}
-                        diyChecked={state.diy}
-                        charityChecked={state.charity}
-                        cookingChecked={state.cooking}
-                        relaxationChecked={state.relaxation}
-                        musicChecked={state.music}
-                        busyworkCchecked={state.busywork}
-                        onChange={handleTypeChange}
-                      />
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel3"}
-                    onChange={handleChange("panel3")}
+                    <Typography className={classes.heading} component={"span"}>
+                      <div className="accordionHeader">Type</div>
+                      <div className="selectedTypes">
+                        {!educationRequested ? (
+                          ""
+                        ) : (
+                          <span className="selectionChip">
+                            <SchoolIcon className="typeSelectionIcons" />
+                            {educationRequested}
+                          </span>
+                        )}
+                        {!recreationalRequested ? (
+                          ""
+                        ) : (
+                          <span className="selectionChip">
+                            <BrushIcon className="typeSelectionIcons" />
+                            {recreationalRequested}
+                          </span>
+                        )}
+                        {!socialRequested ? (
+                          ""
+                        ) : (
+                          <span className="selectionChip">
+                            <GroupIcon className="typeSelectionIcons" />
+                            {socialRequested}
+                          </span>
+                        )}
+                        {!diyRequested ? (
+                          ""
+                        ) : (
+                          <span className="selectionChip">
+                            <BuildIcon className="typeSelectionIcons" />
+                            {diyRequested}
+                          </span>
+                        )}
+                        {!charityRequested ? (
+                          ""
+                        ) : (
+                          <div className="selectionChip">
+                            <FavoriteIcon className="typeSelectionIcons" />
+                            {charityRequested}
+                          </div>
+                        )}
+                        {!cookingRequested ? (
+                          ""
+                        ) : (
+                          <div className="selectionChip">
+                            <LocalPizzaIcon className="typeSelectionIcons" />
+                            {cookingRequested}
+                          </div>
+                        )}
+                        {!relaxationRequested ? (
+                          ""
+                        ) : (
+                          <div className="selectionChip">
+                            <SpaIcon className="typeSelectionIcons" />
+                            {relaxationRequested}
+                          </div>
+                        )}
+                        {!musicRequested ? (
+                          ""
+                        ) : (
+                          <div className="selectionChip">
+                            <MusicNoteIcon className="typeSelectionIcons" />
+                            {musicRequested}
+                          </div>
+                        )}
+                        {!busyworkRequested ? (
+                          ""
+                        ) : (
+                          <div className="selectionChip">
+                            <DirectionsRunIcon className="typeSelectionIcons" />
+                            {busyworkRequested}
+                          </div>
+                        )}
+                      </div>
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails style={{ display: "grid" }}>
+                    <p className="typeQuestion">
+                      What types of activities are you intersted in?
+                    </p>
+                    <Type
+                      educationChecked={state.education}
+                      recreationalChecked={state.recreational}
+                      socialChecked={state.social}
+                      diyChecked={state.diy}
+                      charityChecked={state.charity}
+                      cookingChecked={state.cooking}
+                      relaxationChecked={state.relaxation}
+                      musicChecked={state.music}
+                      busyworkCchecked={state.busywork}
+                      onChange={handleTypeChange}
+                    />
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel3"}
+                  onChange={handleChange("panel3")}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3a-content"
+                    id="panel3a-header"
                   >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel3a-content"
-                      id="panel3a-header"
-                    >
-                      <Typography
-                        className={classes.heading}
-                        style={{ fontWeight: 500 }}
-                      >
-                        Accessibility
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ display: "grid" }}>
-                      <p>To what extent should the activity be accessible?</p>
-                      <Accessibility
-                        AccessibilityValue={accessibilityValue}
-                        onAccessibilityChange={handleAccessibilityChange}
-                      />
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel4"}
-                    onChange={handleChange("panel4")}
+                    <Typography className={classes.heading} component={"span"}>
+                      <div className="accordionHeader">Accessibility</div>
+                      <div className="accordionSecondHeader">
+                        {accessibilityMin * 5} - {accessibilityMax * 5}
+                      </div>
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails style={{ display: "grid" }}>
+                    <p className="accessibilityQuestion">
+                      To what extent should the activity be accessible?
+                    </p>
+                    <Accessibility
+                      AccessibilityValue={accessibilityValue}
+                      onAccessibilityChange={handleAccessibilityChange}
+                    />
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel4"}
+                  onChange={handleChange("panel4")}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3a-content"
+                    id="panel3a-header"
                   >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel3a-content"
-                      id="panel3a-header"
-                    >
-                      <Typography
-                        className={classes.heading}
-                        style={{ fontWeight: 500 }}
-                      >
-                        Price
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ display: "grid" }}>
-                      <p>How much should the activity cost?</p>
-                      <Price
-                        PriceValue={priceValue}
-                        onPriceChange={handlePriceChange}
-                      />
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
+                    <Typography className={classes.heading} component={"span"}>
+                      <div className="accordionHeader">Price</div>
+                      <div className="accordionSecondHeader">
+                        {priceMin * 5} - {priceMax * 5}
+                      </div>
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails style={{ display: "grid" }}>
+                    <p className="costQuestion">
+                      How much should the activity cost?
+                    </p>
+                    <Price
+                      PriceValue={priceValue}
+                      onPriceChange={handlePriceChange}
+                    />
+                  </AccordionDetails>
+                </Accordion>
               </div>
             </div>
-            {!responseData.activity ? (
-              <div
-                style={{
-                  backgroundImage: `url(${error})`,
-                  backgroundSize: "cover",
-                  height: "150vh",
-                  filter: "brightness(60%)",
-                  backgroundRepeat: "no-repeat",
-                  backgroundAttachment: "fixed",
-                  backgroundPosition: "center center",
-                }}
-              ></div>
-            ) : (
-              <div
-                style={{
-                  backgroundImage: `url(${backgroundPic})`,
-                  backgroundSize: "cover",
-                  height: "150vh",
-                  filter: "brightness(60%)",
-                  backgroundRepeat: "no-repeat",
-                  backgroundAttachment: "fixed",
-                  backgroundPosition: "center center",
-                }}
-              ></div>
-            )}
           </div>
-        )}
-      </div>
+          {!responseData.activity ? (
+            <div
+              className="backgroundImage"
+              style={{
+                backgroundImage: `url(${error})`,
+              }}
+            ></div>
+          ) : (
+            <div
+              key={responseData.activity}
+              className="backgroundImage"
+              style={{
+                backgroundImage: `url(${backgroundPic})`,
+              }}
+            ></div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
