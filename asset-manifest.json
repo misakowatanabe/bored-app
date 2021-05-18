@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/bored-app/static/css/main.8a8e7781.chunk.css",
-    "main.js": "/bored-app/static/js/main.9f860e19.chunk.js",
-    "main.js.map": "/bored-app/static/js/main.9f860e19.chunk.js.map",
+    "main.css": "/bored-app/static/css/main.c96946cc.chunk.css",
+    "main.js": "/bored-app/static/js/main.c3644cc3.chunk.js",
+    "main.js.map": "/bored-app/static/js/main.c3644cc3.chunk.js.map",
     "runtime-main.js": "/bored-app/static/js/runtime-main.8d53ca18.js",
     "runtime-main.js.map": "/bored-app/static/js/runtime-main.8d53ca18.js.map",
     "static/js/2.019837b1.chunk.js": "/bored-app/static/js/2.019837b1.chunk.js",
@@ -10,23 +10,23 @@
     "static/js/3.3bbdbb2f.chunk.js": "/bored-app/static/js/3.3bbdbb2f.chunk.js",
     "static/js/3.3bbdbb2f.chunk.js.map": "/bored-app/static/js/3.3bbdbb2f.chunk.js.map",
     "index.html": "/bored-app/index.html",
-    "static/css/main.8a8e7781.chunk.css.map": "/bored-app/static/css/main.8a8e7781.chunk.css.map",
+    "static/css/main.c96946cc.chunk.css.map": "/bored-app/static/css/main.c96946cc.chunk.css.map",
     "static/js/2.019837b1.chunk.js.LICENSE.txt": "/bored-app/static/js/2.019837b1.chunk.js.LICENSE.txt",
-    "static/media/busywork.a5fadbed.jpg": "/bored-app/static/media/busywork.a5fadbed.jpg",
-    "static/media/charity.b7d3a47e.jpg": "/bored-app/static/media/charity.b7d3a47e.jpg",
-    "static/media/cooking.6981a115.jpg": "/bored-app/static/media/cooking.6981a115.jpg",
-    "static/media/diy.3e1a033d.jpg": "/bored-app/static/media/diy.3e1a033d.jpg",
+    "static/media/busywork.cc7d6642.jpg": "/bored-app/static/media/busywork.cc7d6642.jpg",
+    "static/media/charity.bf753656.jpg": "/bored-app/static/media/charity.bf753656.jpg",
+    "static/media/cooking.fac858c1.jpg": "/bored-app/static/media/cooking.fac858c1.jpg",
+    "static/media/diy.3f86b322.jpg": "/bored-app/static/media/diy.3f86b322.jpg",
     "static/media/education.6e7e2540.jpg": "/bored-app/static/media/education.6e7e2540.jpg",
-    "static/media/error.08809e6e.jpg": "/bored-app/static/media/error.08809e6e.jpg",
-    "static/media/music.8d10017a.jpg": "/bored-app/static/media/music.8d10017a.jpg",
-    "static/media/recreational.02030c37.jpg": "/bored-app/static/media/recreational.02030c37.jpg",
-    "static/media/relaxation.54e74fc8.jpg": "/bored-app/static/media/relaxation.54e74fc8.jpg",
-    "static/media/social.0088f0f8.jpg": "/bored-app/static/media/social.0088f0f8.jpg"
+    "static/media/error.40651973.jpg": "/bored-app/static/media/error.40651973.jpg",
+    "static/media/music.7fb7fb5c.jpg": "/bored-app/static/media/music.7fb7fb5c.jpg",
+    "static/media/recreational.5229211c.jpg": "/bored-app/static/media/recreational.5229211c.jpg",
+    "static/media/relaxation.a98364b1.jpg": "/bored-app/static/media/relaxation.a98364b1.jpg",
+    "static/media/social.be506be4.jpg": "/bored-app/static/media/social.be506be4.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.8d53ca18.js",
     "static/js/2.019837b1.chunk.js",
-    "static/css/main.8a8e7781.chunk.css",
-    "static/js/main.9f860e19.chunk.js"
+    "static/css/main.c96946cc.chunk.css",
+    "static/js/main.c3644cc3.chunk.js"
   ]
 }
