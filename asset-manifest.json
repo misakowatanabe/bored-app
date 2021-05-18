@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/bored-app/static/css/main.ef026953.chunk.css",
+    "main.css": "/bored-app/static/css/main.220a9dd1.chunk.css",
     "main.js": "/bored-app/static/js/main.35c6c23e.chunk.js",
     "main.js.map": "/bored-app/static/js/main.35c6c23e.chunk.js.map",
     "runtime-main.js": "/bored-app/static/js/runtime-main.8d53ca18.js",
@@ -10,7 +10,7 @@
     "static/js/3.3bbdbb2f.chunk.js": "/bored-app/static/js/3.3bbdbb2f.chunk.js",
     "static/js/3.3bbdbb2f.chunk.js.map": "/bored-app/static/js/3.3bbdbb2f.chunk.js.map",
     "index.html": "/bored-app/index.html",
-    "static/css/main.ef026953.chunk.css.map": "/bored-app/static/css/main.ef026953.chunk.css.map",
+    "static/css/main.220a9dd1.chunk.css.map": "/bored-app/static/css/main.220a9dd1.chunk.css.map",
     "static/js/2.019837b1.chunk.js.LICENSE.txt": "/bored-app/static/js/2.019837b1.chunk.js.LICENSE.txt",
     "static/media/busywork.babfd0a1.jpg": "/bored-app/static/media/busywork.babfd0a1.jpg",
     "static/media/charity.e0557303.jpg": "/bored-app/static/media/charity.e0557303.jpg",
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.8d53ca18.js",
     "static/js/2.019837b1.chunk.js",
-    "static/css/main.ef026953.chunk.css",
+    "static/css/main.220a9dd1.chunk.css",
     "static/js/main.35c6c23e.chunk.js"
   ]
 }
