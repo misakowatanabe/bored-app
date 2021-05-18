@@ -206,11 +206,8 @@ function Input() {
 
   return (
     <div>
-      {!responseData ? (
-        ""
-      ) : (
+      {!responseData ? null : (
         <div>
-          {/* <div className="textImageWithLink-container"></div> */}
           <div className="contents-container">
             {!responseData.activity ? (
               <div className="text-container">
@@ -438,6 +435,8 @@ function Input() {
               className="backgroundImage"
               style={{
                 backgroundImage: `url(${error})`,
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
               }}
             ></div>
           ) : (
@@ -446,6 +445,8 @@ function Input() {
               className="backgroundImage"
               style={{
                 backgroundImage: `url(${backgroundPic})`,
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
               }}
             ></div>
           )}
