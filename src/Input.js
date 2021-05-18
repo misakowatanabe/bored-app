@@ -206,7 +206,7 @@ function Input() {
 
   return (
     <div>
-      {!responseData ? null : (
+      {!responseData && !backgroundPic ? null : (
         <div>
           <div className="contents-container">
             {!responseData.activity ? (

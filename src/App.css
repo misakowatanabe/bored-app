@@ -159,7 +159,7 @@ button :active {
 .backgroundImage {
   background-position: center;
   height: 200vh;
-  filter: brightness(38%);
+  filter: brightness(60%);
   background-repeat: no-repeat; 
 
   -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
