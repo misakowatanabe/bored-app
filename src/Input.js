@@ -173,6 +173,8 @@ function Input() {
 
   const [backgroundPic, setBackgroundPic] = useState("");
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     axios
       .get(apiUrl)
@@ -198,6 +200,8 @@ function Input() {
         } else if (type === "busywork") {
           setBackgroundPic(imageBusywork);
         }
+        setIsLoaded(true);
+
       })
       .catch((error) => {
         console.log(error);
@@ -206,10 +210,10 @@ function Input() {
 
   return (
     <div>
-      {!responseData && imageEducation && imageRecreational && imageSocial && imageDiy && imageCharity && imageCooking && imageRelaxation && imageMusic && imageBusywork ? null : (
+      {!responseData ? null : (
         <div>
           <div className="contents-container">
-            {!responseData.activity ? (
+            {!responseData.activity && isLoaded === true ? (
               <div className="text-container">
                 <div className="text">
                   <div className="mainText">No matching</div>
