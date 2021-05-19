@@ -76,7 +76,7 @@ html {
 }
 
 .accordion-container {
-  margin-top: 60px;
+  margin-top: 20px;
   opacity: 0.8;
   margin-right: 5%;
   margin-left: 5%;
@@ -144,16 +144,22 @@ p {
   margin-bottom: 48px;
 }
 
+.buttonPosition {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 5%;
+  margin-left: auto;
+}
+
 button {
-  background-color: #ffffff00;
-  width: 100%;
+  background-color: transparent;
   padding-right: 0%;
   padding-left: 0%;
   border: none;
 }
 
-button :active {
-  background-color: #ffffff00;
+button :hover, button :active {
+  background-color: transparent;
 }
 
 .backgroundImage {
@@ -217,7 +223,7 @@ button :active {
   .mainText,
   .subText,
   .subTextForNoMatch,
-  .link {
+  .link, .buttonPosition {
     width: 691px;
     margin-right: auto;
     margin-left: auto;

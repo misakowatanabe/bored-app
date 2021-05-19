@@ -29,6 +29,7 @@ import LocalPizzaIcon from "@material-ui/icons/LocalPizza";
 import SpaIcon from "@material-ui/icons/Spa";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import RefreshIcon from "@material-ui/icons/Refresh";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -201,7 +202,6 @@ function Input() {
           setBackgroundPic(imageBusywork);
         }
         setIsLoaded(true);
-
       })
       .catch((error) => {
         console.log(error);
@@ -225,10 +225,8 @@ function Input() {
             ) : (
               <div className="text-container">
                 <div className="text" key={responseData.key}>
-                  <button onClick={() => setRefetch(refetch + 1)}>
-                    <div className="subText">Feeling bored?</div>
-                    <div className="mainText">{responseData.activity}</div>
-                  </button>
+                  <div className="subText">Feeling bored?</div>
+                  <div className="mainText">{responseData.activity}</div>
                   {!responseData.link ? null : (
                     <div className="link-container">
                       <div className="link">
@@ -246,6 +244,13 @@ function Input() {
                 </div>
               </div>
             )}
+            <div className="buttonPosition">
+              <button onClick={() => setRefetch(refetch + 1)}>
+                <RefreshIcon
+                  style={{ color: "rgb(226, 226, 226)", fontSize: "30px" }}
+                />
+              </button>
+            </div>
             <div className="accordion-container">
               <div className={classes.root}>
                 <Accordion
@@ -440,7 +445,6 @@ function Input() {
               style={{
                 backgroundImage: `url(${error})`,
                 backgroundSize: "cover",
-                backgroundAttachment: "fixed",
               }}
             ></div>
           ) : (
@@ -450,7 +454,6 @@ function Input() {
               style={{
                 backgroundImage: `url(${backgroundPic})`,
                 backgroundSize: "cover",
-                backgroundAttachment: "fixed",
               }}
             ></div>
           )}
