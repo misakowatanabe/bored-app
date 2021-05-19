@@ -206,7 +206,7 @@ function Input() {
 
   return (
     <div>
-      {!responseData && !backgroundPic ? null : (
+      {!responseData && imageEducation && imageRecreational && imageSocial && imageDiy && imageCharity && imageCooking && imageRelaxation && imageMusic && imageBusywork ? null : (
         <div>
           <div className="contents-container">
             {!responseData.activity ? (
@@ -220,7 +220,7 @@ function Input() {
               </div>
             ) : (
               <div className="text-container">
-                <div className="text" key={responseData.activity}>
+                <div className="text" key={responseData.key}>
                   <button onClick={() => setRefetch(refetch + 1)}>
                     <div className="subText">Feeling bored?</div>
                     <div className="mainText">{responseData.activity}</div>
@@ -441,7 +441,7 @@ function Input() {
             ></div>
           ) : (
             <div
-              key={responseData.activity}
+              key={responseData.key}
               className="backgroundImage"
               style={{
                 backgroundImage: `url(${backgroundPic})`,
