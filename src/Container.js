@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ErrorMessage from "./Presentational/ErrorMessage";
-import LinkMessage from "./Presentational/LinkMessage";
-import RefetchButton from "./Presentational/RefetchButton";
-import Accordion1 from "./Presentational/Accordion-1";
-import Accordion2 from "./Presentational/Accordion-2";
-import Accordion3 from "./Presentational/Accordion-3";
-import Accordion4 from "./Presentational/Accordion-4";
+import ErrorMessage from "./presentational/ErrorMessage";
+import LinkMessage from "./presentational/LinkMessage";
+import RefetchButton from "./presentational/RefetchButton";
+import Accordion1 from "./presentational/Accordion-1";
+import Accordion2 from "./presentational/Accordion-2";
+import Accordion3 from "./presentational/Accordion-3";
+import Accordion4 from "./presentational/Accordion-4";
 import axios from "axios";
 import imageEducation from "./img/education.jpg";
 import imageRecreational from "./img/recreational.jpg";
@@ -80,55 +80,55 @@ function Container() {
     educationString = "&type=education";
     educationRequested = "Education";
   } else {
-    educationString = null;
+    educationString = "";
   }
   if (state.recreational === true) {
     recreationalString = "&type=recreational";
     recreationalRequested = "Recreational";
   } else {
-    recreationalString = null;
+    recreationalString = "";
   }
   if (state.social === true) {
     socialString = "&type=social";
     socialRequested = "Social";
   } else {
-    socialString = null;
+    socialString = "";
   }
   if (state.diy === true) {
     diyString = "&type=diy";
     diyRequested = "DIY";
   } else {
-    diyString = null;
+    diyString = "";
   }
   if (state.charity === true) {
     charityString = "&type=charity";
     charityRequested = "Charity";
   } else {
-    charityString = null;
+    charityString = "";
   }
   if (state.cooking === true) {
     cookingString = "&type=cooking";
     cookingRequested = "Cooking";
   } else {
-    cookingString = null;
+    cookingString = "";
   }
   if (state.relaxation === true) {
     relaxationString = "&type=relaxation";
     relaxationRequested = "Relaxation";
   } else {
-    relaxationString = null;
+    relaxationString = "";
   }
   if (state.music === true) {
     musicString = "&type=music";
     musicRequested = "Music";
   } else {
-    musicString = null;
+    musicString = "";
   }
   if (state.busywork === true) {
     busyworkString = "&type=busywork";
     busyworkRequested = "Busy work";
   } else {
-    busyworkString = null;
+    busyworkString = "";
   }
 
   const typeRequest = `${educationString}${recreationalString}${socialString}${diyString}${charityString}${cookingString}${relaxationString}${musicString}${busyworkString}`;
