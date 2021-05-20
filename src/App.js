@@ -1,13 +1,8 @@
-import './App.css';
-import Input from "./Input";
+import "./style/App.css";
+import Container from "./Container";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header"></header>
-      <Input />                                                                                                                                                                          
-    </div>
-  );
+  return <Container />;
 }
 
 export default App;

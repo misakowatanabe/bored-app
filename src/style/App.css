@@ -167,6 +167,7 @@ button :hover, button :active {
   height: 200vh;
   filter: brightness(60%);
   background-repeat: no-repeat; 
+  background-size: cover;
 }
 
 @keyframes fadein {
