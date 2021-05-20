@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bored-app/static/css/main.ee825cf1.chunk.css",
-    "main.js": "/bored-app/static/js/main.38dba221.chunk.js",
-    "main.js.map": "/bored-app/static/js/main.38dba221.chunk.js.map",
+    "main.js": "/bored-app/static/js/main.c9cefb3d.chunk.js",
+    "main.js.map": "/bored-app/static/js/main.c9cefb3d.chunk.js.map",
     "runtime-main.js": "/bored-app/static/js/runtime-main.1bd31949.js",
     "runtime-main.js.map": "/bored-app/static/js/runtime-main.1bd31949.js.map",
     "static/js/2.945ac119.chunk.js": "/bored-app/static/js/2.945ac119.chunk.js",
@@ -10,21 +10,21 @@
     "index.html": "/bored-app/index.html",
     "static/css/main.ee825cf1.chunk.css.map": "/bored-app/static/css/main.ee825cf1.chunk.css.map",
     "static/js/2.945ac119.chunk.js.LICENSE.txt": "/bored-app/static/js/2.945ac119.chunk.js.LICENSE.txt",
-    "static/media/busywork.cc7d6642.jpg": "/bored-app/static/media/busywork.cc7d6642.jpg",
-    "static/media/charity.bf753656.jpg": "/bored-app/static/media/charity.bf753656.jpg",
-    "static/media/cooking.fac858c1.jpg": "/bored-app/static/media/cooking.fac858c1.jpg",
-    "static/media/diy.3f86b322.jpg": "/bored-app/static/media/diy.3f86b322.jpg",
-    "static/media/education.6e7e2540.jpg": "/bored-app/static/media/education.6e7e2540.jpg",
-    "static/media/error.40651973.jpg": "/bored-app/static/media/error.40651973.jpg",
-    "static/media/music.7fb7fb5c.jpg": "/bored-app/static/media/music.7fb7fb5c.jpg",
-    "static/media/recreational.5229211c.jpg": "/bored-app/static/media/recreational.5229211c.jpg",
-    "static/media/relaxation.a98364b1.jpg": "/bored-app/static/media/relaxation.a98364b1.jpg",
-    "static/media/social.be506be4.jpg": "/bored-app/static/media/social.be506be4.jpg"
+    "static/media/busywork.125f8561.jpg": "/bored-app/static/media/busywork.125f8561.jpg",
+    "static/media/charity.30bcd2a2.jpg": "/bored-app/static/media/charity.30bcd2a2.jpg",
+    "static/media/cooking.8ef12891.jpg": "/bored-app/static/media/cooking.8ef12891.jpg",
+    "static/media/diy.d20778c6.jpg": "/bored-app/static/media/diy.d20778c6.jpg",
+    "static/media/education.6651d81d.jpg": "/bored-app/static/media/education.6651d81d.jpg",
+    "static/media/error.ca8e0403.jpg": "/bored-app/static/media/error.ca8e0403.jpg",
+    "static/media/music.79a9ab39.jpg": "/bored-app/static/media/music.79a9ab39.jpg",
+    "static/media/recreational.d39d6285.jpg": "/bored-app/static/media/recreational.d39d6285.jpg",
+    "static/media/relaxation.5ad9c1ac.jpg": "/bored-app/static/media/relaxation.5ad9c1ac.jpg",
+    "static/media/social.0be1224f.jpg": "/bored-app/static/media/social.0be1224f.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.1bd31949.js",
     "static/js/2.945ac119.chunk.js",
     "static/css/main.ee825cf1.chunk.css",
-    "static/js/main.38dba221.chunk.js"
+    "static/js/main.c9cefb3d.chunk.js"
   ]
 }
