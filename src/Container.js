@@ -192,20 +192,24 @@ function Container() {
 
   return (
     <div>
-      {!responseData ? null : (
+      {!responseData && !backgroundPic ? null : (
         <div>
           <div className="contents-container">
             {!responseData.activity ? (
               <ErrorMessage />
             ) : (
               <div className="text-container">
-                <div className="text">
-                  <div className="subText">Feeling bored?</div>
-                  <div className="mainText">{responseData.activity}</div>
-                  {!responseData.link ? null : (
-                    <LinkMessage href={responseData.link}>
-                      {responseData.link}
-                    </LinkMessage>
+                <div className="text" key={responseData.key}>
+                  {!responseData && !backgroundPic ? null : (
+                    <div>
+                      <div className="subText">Feeling bored?</div>
+                      <div className="mainText">{responseData.activity}</div>
+                      {!responseData.link ? null : (
+                        <LinkMessage href={responseData.link}>
+                          {responseData.link}
+                        </LinkMessage>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
@@ -310,8 +314,8 @@ function Container() {
             </div>
           </div>
           <div
-            key={responseData.key}
             className="backgroundImage"
+            key={responseData.key}
             style={
               !responseData.activity
                 ? {
