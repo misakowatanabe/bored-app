@@ -1,17 +1,15 @@
 {
   "files": {
-    "main.css": "/bored-app/static/css/main.64dd23dd.chunk.css",
-    "main.js": "/bored-app/static/js/main.133f032a.chunk.js",
-    "main.js.map": "/bored-app/static/js/main.133f032a.chunk.js.map",
-    "runtime-main.js": "/bored-app/static/js/runtime-main.95ba4ddb.js",
-    "runtime-main.js.map": "/bored-app/static/js/runtime-main.95ba4ddb.js.map",
-    "static/js/2.62c003c1.chunk.js": "/bored-app/static/js/2.62c003c1.chunk.js",
-    "static/js/2.62c003c1.chunk.js.map": "/bored-app/static/js/2.62c003c1.chunk.js.map",
-    "static/js/3.4f014b6f.chunk.js": "/bored-app/static/js/3.4f014b6f.chunk.js",
-    "static/js/3.4f014b6f.chunk.js.map": "/bored-app/static/js/3.4f014b6f.chunk.js.map",
+    "main.css": "/bored-app/static/css/main.ee825cf1.chunk.css",
+    "main.js": "/bored-app/static/js/main.8d316e56.chunk.js",
+    "main.js.map": "/bored-app/static/js/main.8d316e56.chunk.js.map",
+    "runtime-main.js": "/bored-app/static/js/runtime-main.1bd31949.js",
+    "runtime-main.js.map": "/bored-app/static/js/runtime-main.1bd31949.js.map",
+    "static/js/2.945ac119.chunk.js": "/bored-app/static/js/2.945ac119.chunk.js",
+    "static/js/2.945ac119.chunk.js.map": "/bored-app/static/js/2.945ac119.chunk.js.map",
     "index.html": "/bored-app/index.html",
-    "static/css/main.64dd23dd.chunk.css.map": "/bored-app/static/css/main.64dd23dd.chunk.css.map",
-    "static/js/2.62c003c1.chunk.js.LICENSE.txt": "/bored-app/static/js/2.62c003c1.chunk.js.LICENSE.txt",
+    "static/css/main.ee825cf1.chunk.css.map": "/bored-app/static/css/main.ee825cf1.chunk.css.map",
+    "static/js/2.945ac119.chunk.js.LICENSE.txt": "/bored-app/static/js/2.945ac119.chunk.js.LICENSE.txt",
     "static/media/busywork.cc7d6642.jpg": "/bored-app/static/media/busywork.cc7d6642.jpg",
     "static/media/charity.bf753656.jpg": "/bored-app/static/media/charity.bf753656.jpg",
     "static/media/cooking.fac858c1.jpg": "/bored-app/static/media/cooking.fac858c1.jpg",
@@ -24,9 +22,9 @@
     "static/media/social.be506be4.jpg": "/bored-app/static/media/social.be506be4.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.95ba4ddb.js",
-    "static/js/2.62c003c1.chunk.js",
-    "static/css/main.64dd23dd.chunk.css",
-    "static/js/main.133f032a.chunk.js"
+    "static/js/runtime-main.1bd31949.js",
+    "static/js/2.945ac119.chunk.js",
+    "static/css/main.ee825cf1.chunk.css",
+    "static/js/main.8d316e56.chunk.js"
   ]
 }
