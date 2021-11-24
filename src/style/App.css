@@ -97,7 +97,7 @@ html {
 }
 
 .typeSelectionIcons {
-  margin-right: 6px;
+  margin: 6px 6px 0px 0px;
   color: #474747;
 }
 
@@ -109,8 +109,8 @@ html {
   display: flex;
   align-items: center;
   margin: 2px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 15px;
+  padding-left: 13px;
 }
 
 a {

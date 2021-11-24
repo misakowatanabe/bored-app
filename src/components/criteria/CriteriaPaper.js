@@ -57,6 +57,45 @@ export default function CriteriaPaper({
     setPriceValue(newPriceValue);
   };
 
+  const chip = [
+    {
+      request: educationRequested,
+      icon: <SchoolIcon />,
+    },
+    {
+      request: recreationalRequested,
+      icon: <BrushIcon />,
+    },
+    {
+      request: socialRequested,
+      icon: <GroupIcon />,
+    },
+    {
+      request: diyRequested,
+      icon: <BuildIcon />,
+    },
+    {
+      request: charityRequested,
+      icon: <FavoriteIcon />,
+    },
+    {
+      request: cookingRequested,
+      icon: <LocalPizzaIcon />,
+    },
+    {
+      request: relaxationRequested,
+      icon: <SpaIcon />,
+    },
+    {
+      request: musicRequested,
+      icon: <MusicNoteIcon />,
+    },
+    {
+      request: busyworkRequested,
+      icon: <DirectionsRunIcon />,
+    },
+  ];
+
   return (
     <div className="accordion-container">
       <div>
@@ -82,60 +121,16 @@ export default function CriteriaPaper({
           musicChecked={state.music}
           busyworkChecked={state.busywork}
         >
-          {!educationRequested ? null : (
-            <span className="selectionChip">
-              <SchoolIcon className="typeSelectionIcons" />
-              {educationRequested}
-            </span>
-          )}
-          {!recreationalRequested ? null : (
-            <span className="selectionChip">
-              <BrushIcon className="typeSelectionIcons" />
-              {recreationalRequested}
-            </span>
-          )}
-          {!socialRequested ? null : (
-            <span className="selectionChip">
-              <GroupIcon className="typeSelectionIcons" />
-              {socialRequested}
-            </span>
-          )}
-          {!diyRequested ? null : (
-            <span className="selectionChip">
-              <BuildIcon className="typeSelectionIcons" />
-              {diyRequested}
-            </span>
-          )}
-          {!charityRequested ? null : (
-            <div className="selectionChip">
-              <FavoriteIcon className="typeSelectionIcons" />
-              {charityRequested}
+          {chip.map(({ request, icon }) => (
+            <div key={request}>
+              {!request ? null : (
+                <span className="selectionChip">
+                  <div className="typeSelectionIcons">{icon}</div>
+                  {request}
+                </span>
+              )}
             </div>
-          )}
-          {!cookingRequested ? null : (
-            <div className="selectionChip">
-              <LocalPizzaIcon className="typeSelectionIcons" />
-              {cookingRequested}
-            </div>
-          )}
-          {!relaxationRequested ? null : (
-            <div className="selectionChip">
-              <SpaIcon className="typeSelectionIcons" />
-              {relaxationRequested}
-            </div>
-          )}
-          {!musicRequested ? null : (
-            <div className="selectionChip">
-              <MusicNoteIcon className="typeSelectionIcons" />
-              {musicRequested}
-            </div>
-          )}
-          {!busyworkRequested ? null : (
-            <div className="selectionChip">
-              <DirectionsRunIcon className="typeSelectionIcons" />
-              {busyworkRequested}
-            </div>
-          )}
+          ))}
         </Accordion2>
         <Accordion3
           expanded={expanded === "panel3"}

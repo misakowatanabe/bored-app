@@ -158,7 +158,6 @@ function Container() {
         console.log(error);
       });
   }, [participants, state, accessibilityValue, priceValue, apiUrl, refetch]);
-  console.log(backgroundPic);
 
   return (
     <div>
