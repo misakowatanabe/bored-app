@@ -32,7 +32,7 @@ export default function Accordion2(props) {
           cookingChecked={props.cookingChecked}
           relaxationChecked={props.relaxationChecked}
           musicChecked={props.musicChecked}
-          busyworkCchecked={props.busyworkCchecked}
+          busyworkChecked={props.busyworkChecked}
           onChange={props.handleTypeChange}
         />
       </AccordionDetails>

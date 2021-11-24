@@ -4,7 +4,7 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 export default function RefetchButton(props) {
   return (
     <div className="buttonPosition">
-      <button onClick={props.onClick}>
+      <button onClick={props.onClick} style={{ cursor: "pointer" }}>
         <RefreshIcon
           style={{ color: "rgb(226, 226, 226)", fontSize: "30px" }}
         />

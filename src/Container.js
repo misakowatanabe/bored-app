@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ErrorMessage from "./components/ErrorMessage";
-import LinkMessage from "./components/LinkMessage";
-import RefetchButton from "./components/RefetchButton";
-import Accordion1 from "./components/Accordion-1";
-import Accordion2 from "./components/Accordion-2";
-import Accordion3 from "./components/Accordion-3";
-import Accordion4 from "./components/Accordion-4";
 import axios from "axios";
+import RefetchButton from "./components/RefetchButton";
+import Output from "./components/output/Output";
+import CriteriaPaper from "./components/criteria/CriteriaPaper";
+import Background from "./components/background/Background";
 import imageEducation from "./img/education.jpg";
 import imageRecreational from "./img/recreational.jpg";
 import imageSocial from "./img/social.jpg";
@@ -16,28 +13,9 @@ import imageCooking from "./img/cooking.jpg";
 import imageRelaxation from "./img/relaxation.jpg";
 import imageMusic from "./img/music.jpg";
 import imageBusywork from "./img/busywork.jpg";
-import error from "./img/error.jpg";
-import SchoolIcon from "@material-ui/icons/School";
-import BrushIcon from "@material-ui/icons/Brush";
-import BuildIcon from "@material-ui/icons/Build";
-import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
-import GroupIcon from "@material-ui/icons/Group";
-import LocalPizzaIcon from "@material-ui/icons/LocalPizza";
-import SpaIcon from "@material-ui/icons/Spa";
-import MusicNoteIcon from "@material-ui/icons/MusicNote";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function Container() {
-  const [expanded, setExpanded] = useState(false);
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
   const [participants, setParticipants] = useState("1");
-  const handleParticipantsChange = (event) => {
-    setParticipants(event.target.value);
-  };
-
   const participantsRequest = `participants=${participants}`;
 
   const [state, setState] = useState({
@@ -51,10 +29,6 @@ function Container() {
     music: true,
     busywork: true,
   });
-
-  const handleTypeChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
 
   var educationString = null;
   var recreationalString = null;
@@ -134,19 +108,11 @@ function Container() {
   const typeRequest = `${educationString}${recreationalString}${socialString}${diyString}${charityString}${cookingString}${relaxationString}${musicString}${busyworkString}`;
 
   const [accessibilityValue, setAccessibilityValue] = useState([0, 100]);
-  const handleAccessibilityChange = (event, newAccessibilityValue) => {
-    setAccessibilityValue(newAccessibilityValue);
-  };
-
   var accessibilityMin = accessibilityValue[0] / 100;
   var accessibilityMax = accessibilityValue[1] / 100;
   const accessibilityRequest = `&minaccessibility=${accessibilityMin}&maxaccessibility=${accessibilityMax}`;
 
   const [priceValue, setPriceValue] = useState([0, 100]);
-  const handlePriceChange = (event, newPriceValue) => {
-    setPriceValue(newPriceValue);
-  };
-
   var priceMin = priceValue[0] / 100;
   var priceMax = priceValue[1] / 100;
   const priceRequest = `&minprice=${priceMin}&maxprice=${priceMax}`;
@@ -154,12 +120,12 @@ function Container() {
   const apiUrl = `https://www.boredapi.com/api/activity?${participantsRequest}${typeRequest}${accessibilityRequest}${priceRequest}`;
 
   const [refetch, setRefetch] = useState(0);
-
   const [responseData, setResponseData] = useState(null);
-
-  const [backgroundPic, setBackgroundPic] = useState(null);
+  const [backgroundPic, setBackgroundPic] = useState("");
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    setChecked(false);
     axios
       .get(apiUrl)
       .then((response) => {
@@ -185,149 +151,53 @@ function Container() {
           setBackgroundPic(imageBusywork);
         }
       })
+      .then(() => {
+        setChecked(true);
+      })
       .catch((error) => {
         console.log(error);
       });
   }, [participants, state, accessibilityValue, priceValue, apiUrl, refetch]);
+  console.log(backgroundPic);
 
   return (
     <div>
-      {!responseData && !backgroundPic ? null : (
-        <div>
-          <div className="contents-container">
-            {!responseData.activity ? (
-              <ErrorMessage />
-            ) : (
-              <div className="text-container">
-                <div className="text" key={responseData.key}>
-                  {!responseData && !backgroundPic ? null : (
-                    <div>
-                      <div className="subText">Feeling bored?</div>
-                      <div className="mainText">{responseData.activity}</div>
-                      {!responseData.link ? null : (
-                        <LinkMessage href={responseData.link}>
-                          {responseData.link}
-                        </LinkMessage>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-            <RefetchButton onClick={() => setRefetch(refetch + 1)} />
-            <div className="accordion-container">
-              <div>
-                <Accordion1
-                  expanded={expanded === "panel1"}
-                  onChange={handleChange("panel1")}
-                  value={participants}
-                  handleParticipantsChange={handleParticipantsChange}
-                >
-                  {participants}
-                </Accordion1>
-                <Accordion2
-                  expanded={expanded === "panel2"}
-                  onChange={handleChange("panel2")}
-                  handleTypeChange={handleTypeChange}
-                  educationChecked={state.education}
-                  recreationalChecked={state.recreational}
-                  socialChecked={state.social}
-                  diyChecked={state.diy}
-                  charityChecked={state.charity}
-                  cookingChecked={state.cooking}
-                  relaxationChecked={state.relaxation}
-                  musicChecked={state.music}
-                  busyworkCchecked={state.busywork}
-                >
-                  {!educationRequested ? null : (
-                    <span className="selectionChip">
-                      <SchoolIcon className="typeSelectionIcons" />
-                      {educationRequested}
-                    </span>
-                  )}
-                  {!recreationalRequested ? null : (
-                    <span className="selectionChip">
-                      <BrushIcon className="typeSelectionIcons" />
-                      {recreationalRequested}
-                    </span>
-                  )}
-                  {!socialRequested ? null : (
-                    <span className="selectionChip">
-                      <GroupIcon className="typeSelectionIcons" />
-                      {socialRequested}
-                    </span>
-                  )}
-                  {!diyRequested ? null : (
-                    <span className="selectionChip">
-                      <BuildIcon className="typeSelectionIcons" />
-                      {diyRequested}
-                    </span>
-                  )}
-                  {!charityRequested ? null : (
-                    <div className="selectionChip">
-                      <FavoriteIcon className="typeSelectionIcons" />
-                      {charityRequested}
-                    </div>
-                  )}
-                  {!cookingRequested ? null : (
-                    <div className="selectionChip">
-                      <LocalPizzaIcon className="typeSelectionIcons" />
-                      {cookingRequested}
-                    </div>
-                  )}
-                  {!relaxationRequested ? null : (
-                    <div className="selectionChip">
-                      <SpaIcon className="typeSelectionIcons" />
-                      {relaxationRequested}
-                    </div>
-                  )}
-                  {!musicRequested ? null : (
-                    <div className="selectionChip">
-                      <MusicNoteIcon className="typeSelectionIcons" />
-                      {musicRequested}
-                    </div>
-                  )}
-                  {!busyworkRequested ? null : (
-                    <div className="selectionChip">
-                      <DirectionsRunIcon className="typeSelectionIcons" />
-                      {busyworkRequested}
-                    </div>
-                  )}
-                </Accordion2>
-                <Accordion3
-                  expanded={expanded === "panel3"}
-                  onChange={handleChange("panel3")}
-                  AccessibilityValue={accessibilityValue}
-                  onAccessibilityChange={handleAccessibilityChange}
-                >
-                  {accessibilityMin * 5} - {accessibilityMax * 5}
-                </Accordion3>
-                <Accordion4
-                  expanded={expanded === "panel4"}
-                  onChange={handleChange("panel4")}
-                  PriceValue={priceValue}
-                  onPriceChange={handlePriceChange}
-                >
-                  {priceMin * 5} - {priceMax * 5}
-                </Accordion4>
-              </div>
-            </div>
-          </div>
-          <div
-            className="backgroundImage"
-            key={responseData.key}
-            style={
-              !responseData.activity
-                ? {
-                    backgroundImage: `url(${error})`,
-                  }
-                : {
-                    backgroundImage: `url(${backgroundPic})`,
-                  }
-            }
-          ></div>
-        </div>
-      )}
+      <div className="contents-container">
+        <Output responseData={responseData} checked={checked} />
+        <RefetchButton
+          onClick={() => {
+            setRefetch(refetch + 1);
+          }}
+        />
+        <CriteriaPaper
+          participants={participants}
+          setParticipants={setParticipants}
+          state={state}
+          setState={setState}
+          educationRequested={educationRequested}
+          recreationalRequested={recreationalRequested}
+          socialRequested={socialRequested}
+          diyRequested={diyRequested}
+          charityRequested={charityRequested}
+          cookingRequested={cookingRequested}
+          relaxationRequested={relaxationRequested}
+          musicRequested={musicRequested}
+          busyworkRequested={busyworkRequested}
+          accessibilityValue={accessibilityValue}
+          accessibilityMin={accessibilityMin}
+          accessibilityMax={accessibilityMax}
+          setAccessibilityValue={setAccessibilityValue}
+          priceMin={priceMin}
+          priceMax={priceMax}
+          priceValue={priceValue}
+          setPriceValue={setPriceValue}
+        />
+      </div>
+      <Background
+        backgroundPic={backgroundPic}
+        checked={checked}
+        responseData={responseData}
+      />
     </div>
   );
 }
