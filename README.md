@@ -1,4 +1,9 @@
 # Bored App
-I made this project using React js, Bored API, Material-UI and axios. You can get customized suggestions of what to do depending on your input.
+- React (Hooks) 
+- Axios 
+- Material UI
+- Bored API
 
 Demo: [https://misakowatanabe.github.io/bored-app/](https://misakowatanabe.github.io/bored-app/)
+
+The app gives you customized suggestions on what you can do to kill boredom depending on your input.
